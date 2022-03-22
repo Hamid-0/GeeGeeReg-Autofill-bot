@@ -1,5 +1,3 @@
-from curses.ascii import NL
-from sys import breakpointhook
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
