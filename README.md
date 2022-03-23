@@ -2,9 +2,11 @@
 
 ## What does it do?
 
-Looks through the geegeereg website for available gym slots, providing an easy select menu to book ✅
+Looks through the geegeereg website for available uOtttawa gym slots, providing an easy select menu to book ✅
 
 (Only Supports Minto Gym at the moment)🚨
+
+Example:
 
 <img src="list.png"
      alt="list"
@@ -62,4 +64,20 @@ python3 GeeGeeRegFiller.py
 
 Follow the terminal instructions and enjoy working out!
 
+***The script stops at the checkout screen so you can double check details before submitting!***
+
 ## Common problems and fixes
+
+### "The browser is not loading and is stuck on data:,"
+
+This is a problem with the website it self to fix simply click on the url bar and press enter.
+
+You may need to do this a second time after the closes to display times
+
+### "I get the message: An Error has occured please launch the program again!"
+
+- Do not click away from the browser while it is running
+
+- Relaunch the program
+
+- empty your cart 

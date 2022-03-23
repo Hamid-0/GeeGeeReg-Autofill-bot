@@ -8,19 +8,9 @@ import re
 loginID = "username"
 loginPIN = "pin"
 
-# Information for the form
-
-# Cam's
-loginID= '29003008097637'
-loginPIN= '352428'
-
-# Hamid's
-# loginID= '29003008039142'
-# loginPIN= '630877'
-
 user = False
 if(loginID == "username" or loginPIN == "pin"):
-    print("Welcome to GeeGeeFiller!")
+    print("Welcome to the GeeGeeRegFiller!")
     time.sleep(1)
     while not user:
         loginID = input("Enter your login ID: ")
@@ -29,15 +19,10 @@ if(loginID == "username" or loginPIN == "pin"):
             if re.match("^[0-9]{6}$", loginPIN):
                 user = True
             else:
-                print("Invalid PIN")
+                print("Invalid PIN\nPlease try again.")
         else:
-            print("Invalid UserID")
-elif(loginID == "29003008097637" and loginPIN == "352428"):
-    print("Welcome to GeeGeeFiller Cameron!")
-    time.sleep(1)
-elif(loginID == "29003008039142" and loginPIN == "630877"):
-    print("Welcome to GeeGeeFiller  Hamid!")
-    time.sleep(1)
+            print("Invalid UserID\nPlease try again.")
+
 
 
 # Auxuliary Functions
@@ -94,7 +79,7 @@ try:
             nextButtonClass = nextButton.get_attribute('class') #get the class of the next button to check if it is disabled
             nL = nextButtonClass.split(' ') #split the class into a list of words to check if it is disabled
             nextButton.click()
-            time.sleep(0.25)
+            time.sleep(0.5)
             
     
 except(Exception):
