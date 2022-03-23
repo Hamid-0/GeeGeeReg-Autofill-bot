@@ -20,7 +20,7 @@ You will need the following:
 - pip
 - Selenium
 - ChromeWebDriver
-- Latest Chrome Broweser version
+- Latest Chrome version
 
 ## Installation instructions (Mac)
 
