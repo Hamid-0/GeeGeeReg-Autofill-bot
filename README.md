@@ -22,7 +22,7 @@ You will need the following:
 - ChromeWebDriver
 - Latest Chrome version
 
-## Installation instructions (Mac)
+## Installation (Mac)
 
 ### pip
 
