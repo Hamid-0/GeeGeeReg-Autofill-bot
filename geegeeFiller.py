@@ -4,21 +4,21 @@ from selenium.webdriver.common.by import By
 import re
 
 
-# web = webdriver.Chrome()
-# options = webdriver.ChromeOptions()
-# options.add_argument('--headless')
-
-
 
 
 
 # Information for the form
-loginID= '29003008097637'
-loginPIN= '352428'
+
+# Cam's
+# loginID= '29003008097637'
+# loginPIN= '352428'
+
+# Hamid's
+loginID= '29003008039142'
+loginPIN= '630877'
 
 
 web = webdriver.Chrome()
-
 
 
 
@@ -55,7 +55,6 @@ def search(list, platform):
 i = 0
 # allows us to check if the next button is disabled
 nL = nextButtonClass.split(' ')
-availableSlots = []
 allSlots = []
 
 while (not search(nL,'ui-state-disabled')): #while the next button is not disabled
@@ -142,7 +141,6 @@ while (not search(nL,'ui-state-disabled') and not found): #while the next button
                 if infoDumpL[1] == day and infoDumpL[2] == chooseTime:
                     print(infoDumpL)
                     availableSlots.append(slot)
-                    i= i+1
                     found = True
                     for col in row.find_elements(by=By.CSS_SELECTOR,value='td'):
                         for row2 in col.find_elements(by=By.CSS_SELECTOR,value='tr'):
@@ -160,7 +158,7 @@ while (not search(nL,'ui-state-disabled') and not found): #while the next button
 
 if found:
     print('found')
-    time.sleep(0.25)
+    time.sleep(1)
 
     checkoutBtn = web2.find_elements(by=By.XPATH, value='//*[@id="RegistrationDetails"]/div[3]/div/span/span[1]/input')
 
