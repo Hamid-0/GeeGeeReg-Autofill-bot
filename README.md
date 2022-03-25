@@ -20,9 +20,9 @@ You will need the following:
 - pip
 - Selenium
 - ChromeWebDriver
-- Latest Chrome Broweser version
+- Latest Chrome version
 
-## Installation instructions (Mac)
+## Installation (Mac)
 
 ### pip
 
@@ -70,9 +70,9 @@ Follow the terminal instructions and enjoy working out!
 
 ### "The browser is not loading and is stuck on data:,"
 
-This is a problem with the website it self to fix simply click on the url bar and press enter.
+This is a problem with the website itself to fix simply click on the url bar and press enter.
 
-You may need to do this a second time after the closes to display times
+You may need to do this a second time after the webpage closes to display times
 
 ### "I get the message: An Error has occured please launch the program again!"
 
