@@ -8,6 +8,9 @@ import re
 loginID = "username"
 loginPIN = "pin"
 
+
+
+
 user = False
 if(loginID == "username" or loginPIN == "pin"):
     print("Welcome to the GeeGeeRegFiller!")
@@ -40,10 +43,11 @@ web = webdriver.Chrome()
 web.get('https://geegeereg.uottawa.ca/geegeereg/Activities/ActivitiesDetails.asp?aid=316')
 
 try:
+    web.implicitly_wait(2)
     login = web.find_element(by=By.XPATH, value='//*[@id="toolbar-login"]/a')
     login.click()
 
-    time.sleep(0.25)
+    
 
     loginField = web.find_element(by=By.XPATH, value='//*[@id="ClientBarcode"]')
     loginField.send_keys(loginID)
@@ -79,11 +83,13 @@ try:
             nextButtonClass = nextButton.get_attribute('class') #get the class of the next button to check if it is disabled
             nL = nextButtonClass.split(' ') #split the class into a list of words to check if it is disabled
             nextButton.click()
-            time.sleep(0.5)
+            
+
             
     
 except(Exception):
     print("\nAn Error has occured please launch the program again!\n")
+    print()
     web.quit()
     exit()
 finally:
@@ -132,10 +138,11 @@ web2 = webdriver.Chrome()
 web2.get('https://geegeereg.uottawa.ca/geegeereg/Activities/ActivitiesDetails.asp?aid=316')
 
 try:
+    web2.implicitly_wait(2)
     login = web2.find_element(by=By.XPATH, value='//*[@id="toolbar-login"]/a')
     login.click()
 
-    time.sleep(0.25)
+    
 
     loginField = web2.find_element(by=By.XPATH, value='//*[@id="ClientBarcode"]')
     loginField.send_keys(loginID)
@@ -180,11 +187,12 @@ try:
                 nextButtonClass = nextButton.get_attribute('class') #get the class of the next button to check if it is disabled
                 nL = nextButtonClass.split(' ') #split the class into a list of words to check if it is disabled
                 nextButton.click()
-                time.sleep(0.25)
+                
+
             
 
     if found:
-        time.sleep(1)
+        
 
         checkoutBtn = web2.find_elements(by=By.XPATH, value='//*[@id="RegistrationDetails"]/div[3]/div/span/span[1]/input')
 
@@ -192,7 +200,8 @@ try:
             if btn.is_displayed():
                 btn.click()
                 break
-        time.sleep(1)
+        
+
         detailBtn = web2.find_element(by=By.XPATH, value='//*[@id="regist-detail-info-btn-show"]')
         detailBtn.click()
     else:
