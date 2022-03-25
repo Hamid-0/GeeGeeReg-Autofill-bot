@@ -41,7 +41,7 @@ def search(list, platform):
     return False
     
 
-web = webdriver.Safari()
+web = webdriver.Chrome()
     # Enters text "qwerty" with keyDown SHIFT key and after keyUp SHIFT key (QWERTYqwerty)
 
 web.get('https://geegeereg.uottawa.ca/geegeereg/Activities/ActivitiesDetails.asp?aid=316')
