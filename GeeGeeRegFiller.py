@@ -41,7 +41,7 @@ def search(list, platform):
     return False
     
 
-web = webdriver.Chrome()
+web = webdriver.Safari()
     # Enters text "qwerty" with keyDown SHIFT key and after keyUp SHIFT key (QWERTYqwerty)
 
 web.get('https://geegeereg.uottawa.ca/geegeereg/Activities/ActivitiesDetails.asp?aid=316')
@@ -120,7 +120,17 @@ while (not finalPage): #while the next button is not disabled
             
             for row in timesTable.find_elements(By.CSS_SELECTOR, 'tr'):
                 
-                rL = row.text.split('\n')
+                try:
+                    rL = row.text.split('\n')
+                except:
+                    try:
+                        time.sleep(0.25)
+                        rL = row.text.split('\n')
+                    except:
+                        time.sleep(4)
+                        rL = row.text.split('\n')
+                    
+                print(rL)
                 if (len(rL) > 2 and (rL[0] == 'WORKOUT SESSION' or rL[0] == 'EXPRESS (1 hour) WORKOUT SESSION')):
                     if(len(rL)>=6 and rL[5]=='Add'):
                         infoDump = rL[2] + rL[3]
@@ -209,11 +219,14 @@ while (not found):
         for row in timesTable2.find_elements(By.CSS_SELECTOR, 'tr'):
 
             try:
-
                 rL = row.text.split('\n')
             except:
-                time.sleep(1)
-                rL = row.text.split('\n')
+                try:
+                    time.sleep(0.25)
+                    rL = row.text.split('\n')
+                except:
+                    time.sleep(4)
+                    rL = row.text.split('\n')
 
 
             if (len(rL) > 2 and (rL[0] == 'WORKOUT SESSION' or rL[0] == 'EXPRESS (1 hour) WORKOUT SESSION')):
