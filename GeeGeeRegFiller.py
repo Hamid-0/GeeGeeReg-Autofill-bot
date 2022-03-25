@@ -105,7 +105,7 @@ while (not finalPage): #while the next button is not disabled
             pageNums = web.find_elements(By.ID, 'activity-detail-table_paginate')
             nums = pageNums[0].find_elements(By.CSS_SELECTOR, 'span')
         except:
-            time.sleep(2)
+            time.sleep(4)
             nextButton = web.find_element(By.ID, value='activity-detail-table_next')
             nextButtonClass = nextButton.get_attribute('class')
             # allows us to check if the next button is disabled
@@ -198,7 +198,7 @@ while (not found):
             nL = nextButtonClass.split(' ')
             timesTable2 = web.find_element(By.ID, value='activity-detail-table')
         except:
-            time.sleep(2)
+            time.sleep(4)
             nextButton = web.find_element(By.ID, value='activity-detail-table_next')
             nextButtonClass = nextButton.get_attribute('class')
             # allows us to check if the next button is disabled
@@ -208,8 +208,13 @@ while (not found):
         
         for row in timesTable2.find_elements(By.CSS_SELECTOR, 'tr'):
 
-            
-            rL = row.text.split('\n')
+            try:
+
+                rL = row.text.split('\n')
+            except:
+                time.sleep(1)
+                rL = row.text.split('\n')
+
 
             if (len(rL) > 2 and (rL[0] == 'WORKOUT SESSION' or rL[0] == 'EXPRESS (1 hour) WORKOUT SESSION')):
                 if(len(rL)>=6 and rL[5]=='Add'):
@@ -238,15 +243,16 @@ while (not found):
         
 
 if found:
-    
     try:
         time.sleep(0.25)
         checkoutBtn = web.find_elements(By.XPATH, value='//*[@id="RegistrationDetails"]/div[3]/div/span/span[1]/input')
     except:
         time.sleep(2)
         checkoutBtn = web.find_elements(By.XPATH, value='//*[@id="RegistrationDetails"]/div[3]/div/span/span[1]/input')
-    if(len(checkoutBtn) > 0):
+    if(len(checkoutBtn) >= 0):
         checkoutBtn[0].click()
+    else:
+        checkoutBtn.Key.ENTER
     
     try:
         time.sleep(0.25)
