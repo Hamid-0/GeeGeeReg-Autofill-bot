@@ -11,17 +11,13 @@ import re
 loginID = "username"
 loginPIN = "pin"
 
-
-
-
-
 user = False
 if(loginID == "username" or loginPIN == "pin"):
     print("Welcome to the GeeGeeRegFiller!")
     time.sleep(1)
     while not user:
         loginID = input("Enter your login ID: ")
-        if re.match("^290030080[0-9]{5}$", loginID):
+        if re.match("^29003008[0-9]{6}$", loginID):
             loginPIN = input("Enter your login PIN: ")
             if re.match("^[0-9]{6}$", loginPIN):
                 user = True
@@ -43,8 +39,6 @@ def search(list, platform):
 web = webdriver.Chrome()
 
 web.get('https://geegeereg.uottawa.ca/geegeereg/Activities/ActivitiesDetails.asp?aid=316')
-
-
 
 
 try:
@@ -92,7 +86,7 @@ except:
 allSlots = []
 for i in range(0,4):
 
-    time.sleep(0.25)
+    time.sleep(0.5)
     nextButton = web.find_element(By.ID, value='activity-detail-table_next')      
     sessionType = web.find_elements(By.XPATH, value = '//*[@id="activity-course-row"]/td[1]')
     days = web.find_elements(By.XPATH, value = '//*[@id="activity-course-row"]/td[3]')
@@ -110,9 +104,9 @@ for i in range(0,4):
 
 
 
-time.sleep(0.25)
 
-
+first = web.find_element(By.ID, value='activity-detail-table_first')
+first.click()
 
             
 
@@ -162,14 +156,13 @@ while(not chosen):
 
 # ------------After Choice----------------------------------------------------------------------------------------------------
 # create a second chrome instance to fill the form
-first = web.find_element(By.ID, value='activity-detail-table_first')
-first.click()
+
 
 found = False
 
 while(not found):
 
-    time.sleep(0.25)
+    time.sleep(0.5)
     nextButton = web.find_element(By.ID, value='activity-detail-table_next')      
     sessionType = web.find_elements(By.XPATH, value = '//*[@id="activity-course-row"]/td[1]')
     days = web.find_elements(By.XPATH, value = '//*[@id="activity-course-row"]/td[3]')
