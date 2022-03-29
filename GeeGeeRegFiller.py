@@ -6,10 +6,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import re
 
-
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--disable-gpu")
 
 loginID = "username"
 loginPIN = "pin"
+
+
 
 user = False
 if(loginID == "username" or loginPIN == "pin"):
@@ -28,18 +33,11 @@ if(loginID == "username" or loginPIN == "pin"):
 
 
 
-# Auxuliary Functions
-def search(list, platform):
-    for i in range(len(list)):
-        if list[i] == platform:
-            return True
-    return False
-    
+print("Finding Available Slots...")
 
-web = webdriver.Chrome()
+web = webdriver.Chrome(options=chrome_options)
 
 web.get('https://geegeereg.uottawa.ca/geegeereg/Activities/ActivitiesDetails.asp?aid=316')
-
 
 try:
     time.sleep(0.25)
@@ -100,6 +98,7 @@ for i in range(0,4):
             if addOrNot[j].text == 'Add':
                 allSlots.append([sessionTypeF, days[j].text, timeF, locations[j].text, addOrNot[j].text])
 
+    
     nextButton.click()
 
 
@@ -108,9 +107,9 @@ for i in range(0,4):
 first = web.find_element(By.ID, value='activity-detail-table_first')
 first.click()
 
-            
+web.minimize_window()            
 
-            
+
 chosen =False
 while(not chosen):
     print("Choose from the following times:")
@@ -156,7 +155,7 @@ while(not chosen):
 
 # ------------After Choice----------------------------------------------------------------------------------------------------
 # create a second chrome instance to fill the form
-
+web.maximize_window()
 
 found = False
 
